@@ -1,18 +1,84 @@
+'use client';
 
-import Link from 'next/link';
-import { Button } from '@/components/ui/button';
+import { useState, useMemo } from 'react';
+import { items, gameClasses } from '@/lib/data';
+import type { Item, GameClass } from '@/lib/types';
+import { ItemGrid } from './_components/item-grid';
+import { ItemDetails } from './_components/item-details';
+import { Input } from '@/components/ui/input';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
 
-export default function HomePage() {
+export default function ItemsPage() {
+  const [selectedItem, setSelectedItem] = useState<Item | null>(null);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedClass, setSelectedClass] = useState<string>('all');
+
+  const filteredItems = useMemo(() => {
+    let filtered = items;
+
+    if (searchTerm) {
+      filtered = filtered.filter((item) =>
+        item.name.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    }
+
+    if (selectedClass !== 'all') {
+      // This is a simplified filtering logic.
+      // A more complex implementation would require mapping items to classes.
+      // For now, we'll just show all items as class filtering isn't defined in the data.
+      // We can add this logic if the data model supports it.
+    }
+
+    return filtered;
+  }, [searchTerm, selectedClass]);
+
+
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen text-center">
-      <h1 className="text-4xl font-bold">Welcome to the Item Explorer</h1>
-      <p className="mt-4 text-lg text-muted-foreground">
-        Your companion for Rabbit & Steel.
-      </p>
-      <div className="mt-8 flex gap-4">
-        <Button asChild>
-          <Link href="/items">Explore Items</Link>
-        </Button>
+    <div className="flex h-screen bg-[#1e1e1e] text-white">
+      <div className="w-[350px] flex-shrink-0 bg-[#121212] p-6 overflow-y-auto">
+        {selectedItem ? (
+          <ItemDetails item={selectedItem} />
+        ) : (
+          <div className="flex items-center justify-center h-full">
+            <p className="text-muted-foreground">Hover over an item to see details</p>
+          </div>
+        )}
+      </div>
+      <div className="flex-1 p-8 overflow-y-auto">
+        <div className="mb-4">
+          <h1 className="text-3xl font-bold">THE BINDING OF ISAAC: REPENTANCE</h1>
+          <p className="text-lg text-muted-foreground">REPENTANCE ITEMS ({filteredItems.length})</p>
+        </div>
+         <div className="flex gap-4 mb-6">
+          <Input
+            type="text"
+            placeholder="Search for an item..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="bg-[#2a2a2a] border-gray-600 text-white"
+          />
+          <Select onValueChange={setSelectedClass} defaultValue="all">
+            <SelectTrigger className="w-[200px] bg-[#2a2a2a] border-gray-600 text-white">
+              <SelectValue placeholder="Filter by class" />
+            </SelectTrigger>
+            <SelectContent className="bg-[#2a2a2a] border-gray-600 text-white">
+              <SelectItem value="all">All Classes</SelectItem>
+              {gameClasses.map((gc) => (
+                <SelectItem key={gc.id} value={gc.id}>
+                  {gc.name}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+        <hr className="border-gray-600 mb-6" />
+        <ItemGrid items={filteredItems} onSelectItem={setSelectedItem} />
       </div>
     </div>
   );
