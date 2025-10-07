@@ -2,16 +2,22 @@ import type { GameClass, Item, UserTierList } from './types';
 
 export const gameClasses: GameClass[] = [
   {
-    id: 'heavy-slasher',
-    name: 'Heavy Slasher',
-    description: 'A melee powerhouse focused on heavy-hitting attacks.',
-    kit: 'The Heavy Slasher kit revolves around high base damage, critical strikes, and abilities that cleave through multiple enemies. They benefit greatly from items that increase attack damage, critical hit chance, and attack speed.',
+    id: 'wizard',
+    name: 'Wizard',
+    description: 'A master of arcane arts, wielding powerful spells.',
+    kit: 'Wizards rely on a large mana pool and high spell power to deal damage from a distance. They seek items that boost spell power, mana regeneration, and cooldown reduction.',
   },
   {
-    id: 'spellcaster',
-    name: 'Spellcaster',
-    description: 'A ranged magic user who controls the battlefield with powerful spells.',
-    kit: 'Spellcasters rely on a large mana pool and high spell power to deal damage from a distance. Their kit includes area-of-effect spells, single-target nukes, and crowd control. They seek items that boost spell power, mana regeneration, and cooldown reduction.',
+    id: 'assassin',
+    name: 'Assassin',
+    description: 'A swift and deadly rogue who excels at single-target elimination.',
+    kit: 'Assassins use stealth and high burst damage to take down priority targets. They benefit from items that grant critical strike, attack damage, and on-hit effects.',
+  },
+  {
+    id: 'heavyblade',
+    name: 'Heavyblade',
+    description: 'A melee powerhouse focused on heavy-hitting attacks.',
+    kit: 'The Heavyblade kit revolves around high base damage, critical strikes, and abilities that cleave through multiple enemies. They benefit greatly from items that increase attack damage, critical hit chance, and attack speed.',
   },
   {
     id: 'dancer',
@@ -20,10 +26,40 @@ export const gameClasses: GameClass[] = [
     kit: 'Dancers excel at dodging attacks and dealing rapid, consecutive hits. Their abilities often grant temporary invulnerability or high mobility. They synergize well with on-hit effect items, attack speed, and movement speed.',
   },
   {
-    id: 'scout',
-    name: 'Scout',
-    description: 'A ranged archer who picks off enemies from afar.',
-    kit: 'Scouts specialize in long-range sustained damage. Their kit includes abilities that enhance their range, attack speed, and allow for kiting enemies. They benefit from items increasing attack damage, range, and attack speed.',
+    id: 'druid',
+    name: 'Druid',
+    description: 'A versatile caster who can shapeshift and command nature.',
+    kit: 'Druids can switch between healing allies and dealing damage with nature-based spells. They benefit from a mix of spell power, health, and mana regeneration.',
+  },
+  {
+    id: 'spellsword',
+    name: 'Spellsword',
+    description: 'A hybrid fighter who infuses their weapon with magical energy.',
+    kit: 'Spellswords combine melee attacks with magical enhancements. They benefit from items that provide both attack damage and spell power.',
+  },
+  {
+    id: 'sniper',
+    name: 'Sniper',
+    description: 'A ranged marksman who picks off enemies from extreme distances.',
+    kit: 'Snipers specialize in long-range, high-impact shots. Their kit includes abilities that enhance their range and critical damage. They benefit from items increasing attack damage, range, and critical hit chance.',
+  },
+  {
+    id: 'bruiser',
+    name: 'Bruiser',
+    description: 'A durable fighter who can both take and deal significant damage.',
+    kit: 'Bruisers are frontline fighters who can sustain through fights while being a constant threat. They benefit from items that give a mix of health, armor, and attack damage.',
+  },
+  {
+    id: 'defender',
+    name: 'Defender',
+    description: 'A stalwart protector who excels at shielding allies and controlling enemies.',
+    kit: 'Defenders are the ultimate frontline tanks. They use crowd control and high defensive stats to protect their team. They benefit from armor, health, and items that have supportive auras.',
+  },
+  {
+    id: 'ancient',
+    name: 'Ancient',
+    description: 'A being of immense power from a forgotten era.',
+    kit: 'The Ancient possesses unique and powerful abilities that defy conventional classification. Their item synergies are often mysterious and powerful.',
   },
 ];
 
