@@ -1,8 +1,8 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import { items, gameClasses } from '@/lib/data';
-import type { Item, GameClass } from '@/lib/types';
+import { items, gameClasses, classTiers } from '@/lib/data';
+import type { Item, Tier } from '@/lib/types';
 import { ItemGrid } from './_components/item-grid';
 import { ItemDetails } from './_components/item-details';
 import { Input } from '@/components/ui/input';
@@ -13,6 +13,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
+import { Tiers } from '@/lib/types';
 
 export default function ItemsPage() {
   const [selectedItem, setSelectedItem] = useState<Item | null>(null);
@@ -27,15 +28,31 @@ export default function ItemsPage() {
         item.name.toLowerCase().includes(searchTerm.toLowerCase())
       );
     }
+    
+    return filtered;
+  }, [searchTerm]);
 
-    // Class filtering logic will be added later
-    if (selectedClass !== 'all') {
-      // Placeholder for class filtering
+  const tieredItems: { [key in Tier]?: Item[] } = useMemo(() => {
+    if (selectedClass === 'all' || !classTiers[selectedClass]) {
+      return {};
     }
 
-    return filtered;
-  }, [searchTerm, selectedClass]);
+    const tiers = classTiers[selectedClass];
+    if (!tiers) return {};
 
+    const grouped: { [key in Tier]?: Item[] } = {};
+
+    for (const item of filteredItems) {
+      const tier = tiers[item.id];
+      if (tier) {
+        if (!grouped[tier]) {
+          grouped[tier] = [];
+        }
+        grouped[tier]!.push(item);
+      }
+    }
+    return grouped;
+  }, [selectedClass, filteredItems]);
 
   return (
     <div className="flex h-screen bg-[#1e1e1e] text-white">
@@ -76,7 +93,25 @@ export default function ItemsPage() {
           </Select>
         </div>
         <hr className="border-gray-600 mb-6" />
-        <ItemGrid items={filteredItems} onSelectItem={setSelectedItem} />
+        
+        {selectedClass !== 'all' && Object.keys(tieredItems).length > 0 ? (
+          <div className="space-y-8">
+            {(Object.keys(tieredItems) as Tier[]).sort((a, b) => Tiers.indexOf(a) - Tiers.indexOf(b)).map((tier) => (
+              tieredItems[tier] && tieredItems[tier]!.length > 0 && (
+                <div key={tier}>
+                  <div className="flex items-center gap-4 mb-4">
+                    <h2 className="text-3xl font-bold text-primary w-12">{tier}</h2>
+                    <div className="flex-1 border-t border-gray-600"></div>
+                  </div>
+                  <ItemGrid items={tieredItems[tier]!} onSelectItem={setSelectedItem} />
+                </div>
+              )
+            ))}
+          </div>
+        ) : (
+          <ItemGrid items={filteredItems} onSelectItem={setSelectedItem} />
+        )}
+
       </div>
     </div>
   );

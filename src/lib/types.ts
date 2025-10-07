@@ -29,3 +29,9 @@ export interface UserTierList {
   class: string;
   items: UserTierListItem[];
 }
+
+export type ClassTierList = {
+  [classId: string]: {
+    [itemId: string]: Tier;
+  };
+};

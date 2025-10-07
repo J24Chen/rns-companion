@@ -1,4 +1,4 @@
-import type { GameClass, Item, UserTierList } from './types';
+import type { GameClass, Item, UserTierList, ClassTierList } from './types';
 
 export const gameClasses: GameClass[] = [
   {
@@ -180,3 +180,18 @@ export const userTierLists: UserTierList[] = [
     ],
   },
 ];
+
+export const classTiers: ClassTierList = {
+  dancer: {
+    'swift-boots': 'S',
+    'moon-glaive': 'S',
+    'ruby-ring': 'A',
+    'longbow': 'A',
+    'cursed-idol': 'B',
+    'leather-armor': 'B',
+    'berserkers-greataxe': 'C',
+    'sapphire-brooch': 'D',
+    'ancient-tome': 'D',
+    'mages-circlet': 'D',
+  },
+};
