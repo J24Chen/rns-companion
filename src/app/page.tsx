@@ -92,15 +92,15 @@ export default function ItemsPage() {
             </SelectContent>
           </Select>
         </div>
-        <hr className="border-gray-600 mb-6" />
         
         {selectedClass !== 'all' && Object.keys(tieredItems).length > 0 ? (
-          <div className="space-y-8">
+          <div className="space-y-4">
             {(Object.keys(tieredItems) as Tier[]).sort((a, b) => Tiers.indexOf(a) - Tiers.indexOf(b)).map((tier) => (
               tieredItems[tier] && tieredItems[tier]!.length > 0 && (
                 <div key={tier}>
-                  <div className="flex items-center gap-4 mb-4">
-                    <h2 className="text-3xl font-bold text-primary w-12">{tier}</h2>
+                  <div className="flex items-center gap-4 my-4">
+                    <div className="flex-1 border-t border-gray-600"></div>
+                    <h2 className="text-3xl font-bold text-primary">{tier}</h2>
                     <div className="flex-1 border-t border-gray-600"></div>
                   </div>
                   <ItemGrid items={tieredItems[tier]!} onSelectItem={setSelectedItem} />
@@ -109,7 +109,10 @@ export default function ItemsPage() {
             ))}
           </div>
         ) : (
-          <ItemGrid items={filteredItems} onSelectItem={setSelectedItem} />
+          <div>
+            <hr className="border-gray-600 mb-6" />
+            <ItemGrid items={filteredItems} onSelectItem={setSelectedItem} />
+          </div>
         )}
 
       </div>
