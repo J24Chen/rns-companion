@@ -13,10 +13,15 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
+import {
+  Dialog,
+  DialogContent,
+} from '@/components/ui/dialog';
 import { Tiers } from '@/lib/types';
 
 export default function ItemsPage() {
-  const [selectedItem, setSelectedItem] = useState<Item | null>(null);
+  const [hoveredItem, setHoveredItem] = useState<Item | null>(null);
+  const [inspectedItem, setInspectedItem] = useState<Item | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedClass, setSelectedClass] = useState<string>('all');
 
@@ -57,8 +62,8 @@ export default function ItemsPage() {
   return (
     <div className="flex h-screen bg-[#1e1e1e] text-white">
       <div className="w-[350px] flex-shrink-0 bg-[#121212] p-6 overflow-y-auto">
-        {selectedItem ? (
-          <ItemDetails item={selectedItem} />
+        {hoveredItem ? (
+          <ItemDetails item={hoveredItem} />
         ) : (
           <div className="flex items-center justify-center h-full">
             <p className="text-muted-foreground">Hover over an item to see details</p>
@@ -103,7 +108,7 @@ export default function ItemsPage() {
                     <h2 className="text-3xl font-bold text-primary">{tier}</h2>
                     <div className="flex-1 border-t border-gray-600"></div>
                   </div>
-                  <ItemGrid items={tieredItems[tier]!} onSelectItem={setSelectedItem} />
+                  <ItemGrid items={tieredItems[tier]!} onHoverItem={setHoveredItem} onClickItem={setInspectedItem} />
                 </div>
               )
             ))}
@@ -111,11 +116,16 @@ export default function ItemsPage() {
         ) : (
           <div>
             <hr className="border-gray-600 mb-6" />
-            <ItemGrid items={filteredItems} onSelectItem={setSelectedItem} />
+            <ItemGrid items={filteredItems} onHoverItem={setHoveredItem} onClickItem={setInspectedItem} />
           </div>
         )}
 
       </div>
+      <Dialog open={!!inspectedItem} onOpenChange={(open) => !open && setInspectedItem(null)}>
+        <DialogContent className="bg-[#121212] border-gray-700 text-white max-w-sm">
+          {inspectedItem && <ItemDetails item={inspectedItem} />}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
