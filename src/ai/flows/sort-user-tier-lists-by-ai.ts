@@ -16,7 +16,6 @@ const SortUserTierListsByAIInputSchema = z.object({
       item: z.string().describe('The name of the item in the tier list.'),
       tier: z.string().describe('The tier of the item (e.g., S, A, B, C, D).'),
       class: z.string().describe('The class the tier list is for.'),
-      userRating: z.number().describe('The rating given by the user for this item in this tier list.'),
     })
   ).describe('The user-created tier list to be sorted by AI analysis.'),
 });
@@ -28,7 +27,7 @@ const SortUserTierListsByAIOutputSchema = z.array(
     tier: z.string().describe('The tier of the item (e.g., S, A, B, C, D).'),
     class: z.string().describe('The class the tier list is for.'),
     aiAnalysis: z.string().describe('The AI analysis of the item in the tier list.'),
-    suggestedTier: z.string().describe('The AI suggested tier for the item based on the user rating.'),
+    suggestedTier: z.string().describe('The AI suggested tier for the item.'),
   })
 ).describe('The tier list sorted by AI analysis.');
 export type SortUserTierListsByAIOutput = z.infer<typeof SortUserTierListsByAIOutputSchema>;
@@ -43,15 +42,15 @@ const prompt = ai.definePrompt({
   output: {schema: SortUserTierListsByAIOutputSchema},
   prompt: `You are an AI assistant designed to analyze user-created tier lists for the game Rabbit & Steel and provide insights.
 
-You will receive a tier list with item names, their assigned tiers, the class they are for, and user ratings.
+You will receive a tier list with item names, their assigned tiers, and the class they are for.
 
-Analyze each item in the tier list and provide an AI analysis of its effectiveness for the given class based on the user rating.
+Analyze each item in the tier list and provide an AI analysis of its effectiveness for the given class.
 
-Suggest a tier for each item based on your analysis of the user rating.
+Suggest a tier for each item based on your analysis.
 
 Tier List:
 {{#each tierList}}
-- Item: {{this.item}}, Tier: {{this.tier}}, Class: {{this.class}}, User Rating: {{this.userRating}}
+- Item: {{this.item}}, Tier: {{this.tier}}, Class: {{this.class}}
 {{/each}}
 
 Output a sorted tier list with AI analysis and suggested tiers for each item.

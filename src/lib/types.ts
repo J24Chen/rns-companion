@@ -20,7 +20,6 @@ export const Tiers: Tier[] = ['S', 'A', 'B', 'C', 'D', 'F'];
 export interface UserTierListItem {
   item: string;
   tier: Tier;
-  userRating: number;
 }
 
 export interface UserTierList {
