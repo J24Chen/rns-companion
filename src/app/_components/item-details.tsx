@@ -21,6 +21,14 @@ export function ItemDetails({ item }: ItemDetailsProps) {
       <div className="flex justify-between items-start">
         <div className="space-y-2">
           <h2 className="text-2xl font-bold text-yellow-300 underline">{item.name.toUpperCase()}</h2>
+          <Badge
+            className={cn(
+              'w-fit text-white',
+              categoryColors[item.category]
+            )}
+          >
+            {item.category}
+          </Badge>
         </div>
         <Image
           src={item.imageUrl}
@@ -32,16 +40,6 @@ export function ItemDetails({ item }: ItemDetailsProps) {
         />
       </div>
       <p className="text-base italic text-gray-400">"{item.description}"</p>
-      <div className='flex items-center gap-2'>
-         <Badge
-            className={cn(
-              'w-fit text-white',
-              categoryColors[item.category]
-            )}
-          >
-            {item.category}
-          </Badge>
-      </div>
 
       <hr className="border-gray-600" />
       
