@@ -19,6 +19,7 @@ import {
 } from '@/components/ui/dialog';
 import { Tiers } from '@/lib/types';
 import { cn } from '@/lib/utils';
+import Image from 'next/image';
 
 const tierColors: { [key: string]: string } = {
   S: 'text-red-500',
@@ -30,7 +31,6 @@ const tierColors: { [key: string]: string } = {
 };
 
 export default function ItemsPage() {
-  const [hoveredItem, setHoveredItem] = useState<Item | null>(null);
   const [inspectedItem, setInspectedItem] = useState<Item | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedClass, setSelectedClass] = useState<string>('all');
@@ -68,15 +68,6 @@ export default function ItemsPage() {
 
   return (
     <div className="flex h-screen bg-[#1e1e1e] text-white">
-      <div className="hidden [@media(min-width:600px)]:flex w-[250px] flex-shrink-0 bg-[#121212] p-6 overflow-y-auto flex-col">
-        {hoveredItem ? (
-          <ItemDetails item={hoveredItem} />
-        ) : (
-          <div className="flex items-center justify-center h-full">
-            <p className="text-muted-foreground">Hover over an item to see details</p>
-          </div>
-        )}
-      </div>
       <div className="flex-1 p-8 overflow-y-auto">
         <header className="mb-4 text-center">
           <h1 className="text-3xl font-bold">RABBIT & STEEL</h1>
@@ -115,7 +106,7 @@ export default function ItemsPage() {
                     <h2 className={cn('text-3xl font-bold', tierColors[tier])}>{tier}</h2>
                     <div className="flex-1 border-t border-gray-600"></div>
                   </div>
-                  <ItemGrid items={tieredItems[tier]!} onHoverItem={setHoveredItem} onClickItem={setInspectedItem} />
+                  <ItemGrid items={tieredItems[tier]!} onClickItem={setInspectedItem} />
                 </div>
               )
             ))}
@@ -123,7 +114,7 @@ export default function ItemsPage() {
         ) : (
           <div>
             <hr className="border-gray-600 mb-6" />
-            <ItemGrid items={filteredItems} onHoverItem={setHoveredItem} onClickItem={setInspectedItem} />
+            <ItemGrid items={filteredItems} onClickItem={setInspectedItem} />
           </div>
         )}
 
@@ -131,6 +122,15 @@ export default function ItemsPage() {
       <Dialog open={!!inspectedItem} onOpenChange={(open) => !open && setInspectedItem(null)}>
         <DialogContent className="bg-[#121212] border-gray-700 text-white max-w-sm">
           {inspectedItem && <ItemDetails item={inspectedItem} />}
+          <div className="relative w-16 h-16">
+            <Image
+              src="https://static.wikitide.net/rnswiki/thumb/8/85/Spr_item_arcane_1.png/40px-Spr_item_arcane_1.png"
+              alt="Test Image"
+              fill
+              sizes="64px"
+              className="object-contain"
+            />
+          </div>
         </DialogContent>
       </Dialog>
     </div>
