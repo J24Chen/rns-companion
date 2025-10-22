@@ -27,7 +27,7 @@ const tierColors: { [key: string]: string } = {
 export function ItemDetails({ item }: ItemDetailsProps) {
   return (
     <div className="space-y-4 text-sm">
-      <p className="text-xs text-muted-foreground">ItemID: {item.id.replace(/[^0-9]/g, '') || 'N/A'}</p>
+      <p className="text-xs text-muted-foreground">ItemID: {item.id ? item.id.replace(/[^0-9]/g, '') : 'N/A'}</p>
       <div className="flex justify-between items-start">
         <div className="space-y-2">
           <h2 className="text-2xl font-bold text-yellow-300 underline">{item.name.toUpperCase()}</h2>

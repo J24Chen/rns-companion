@@ -65,8 +65,8 @@ export const gameClasses: GameClass[] = [
 
 export const items: Item[] = [
 
-  {"name": "Raven Grimoire", "description": "Your Special applies Curse Afflicted enemies take 10% extra damage. Duration : 5 seconds .", "category": "Arcane Set", "imageUrl": "https://static.wikitide.net/rnswiki/thumb/6/6f/Spr_item_arcane_0.png/40px-Spr_item_arcane_0.png", "tiers": {"wizard": "NA", "druid": "NA", "spellsword": "NA", "assassin": "NA", "heavyblade": "NA", "dancer": "NA", "sniper": "NA", "bruiser": "NA", "defender": "NA", "ancient": "NA"}},
-  {"name": "Blackwing Staff", "description": "Your Primary applies Curse Afflicted enemies take 10% extra damage. Duration : 5 seconds .", "category": "Arcane Set", "imageUrl": "https://static.wikitide.net/rnswiki/thumb/8/85/Spr_item_arcane_1.png/40px-Spr_item_arcane_1.png", "tiers": {"wizard": "NA", "druid": "NA", "spellsword": "NA", "assassin": "NA", "heavyblade": "NA", "dancer": "NA", "sniper": "NA", "bruiser": "NA", "defender": "NA", "ancient": "NA"}},
+  {"id": "raven-grimoire", "name": "Raven Grimoire", "description": "Your Special applies Curse Afflicted enemies take 10% extra damage. Duration : 5 seconds .", "category": "Cursed", "imageUrl": "https://static.wikitide.net/rnswiki/thumb/6/6f/Spr_item_arcane_0.png/40px-Spr_item_arcane_0.png", "tiers": {"wizard": "A", "druid": "B", "spellsword": "C", "assassin": "F", "heavyblade": "F", "dancer": "F", "sniper": "F", "bruiser": "F", "defender": "F", "ancient": "A"}},
+  {"id": "blackwing-staff", "name": "Blackwing Staff", "description": "Your Primary applies Curse Afflicted enemies take 10% extra damage. Duration : 5 seconds .", "category": "Cursed", "imageUrl": "https://static.wikitide.net/rnswiki/thumb/8/85/Spr_item_arcane_1.png/40px-Spr_item_arcane_1.png", "tiers": {"wizard": "S", "druid": "A", "spellsword": "B", "assassin": "F", "heavyblade": "F", "dancer": "F", "sniper": "F", "bruiser": "F", "defender": "F", "ancient": "S"}},
 
   {
     id: 'sapphire-brooch',
@@ -231,7 +231,6 @@ export const items: Item[] = [
       druid: 'A',
       spellsword: 'C',
       ancient: 'D',
-      sapphire: 'S',
       assassin: 'F',
       heavyblade: 'F',
       dancer: 'F',

@@ -16,9 +16,9 @@ export interface GameClass {
   kit: string;
 }
 
-export type Tier = 'S' | 'A' | 'B' | 'C' | 'D' | 'F';
+export type Tier = 'S' | 'A' | 'B' | 'C' | 'D' | 'F' | 'NA';
 
-export const Tiers: Tier[] = ['S', 'A', 'B', 'C', 'D', 'F'];
+export const Tiers: Tier[] = ['S', 'A', 'B', 'C', 'D', 'F', 'NA'];
 
 export interface UserTierListItem {
   item: string;
