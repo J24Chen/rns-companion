@@ -64,13 +64,13 @@ export const gameClasses: GameClass[] = [
 ];
 
 export const items: Item[] = [
-  {"name": "Raven Grimoire", "description": "Your Special applies Curse Afflicted enemies take 10% extra damage. Duration : 5 seconds .", "imageUrl": "https://static.wikitide.net/rnswiki/thumb/6/6f/Spr_item_arcane_0.png/40px-Spr_item_arcane_0.png", "tiers": {"wizard": "A", "druid": "B", "spellsword": "C", "assassin": "F", "heavyblade": "F", "dancer": "F", "sniper": "F", "bruiser": "F", "defender": "F", "ancient": "A"}},
-  {"name": "Blackwing Staff", "description": "Your Primary applies Curse Afflicted enemies take 10% extra damage. Duration : 5 seconds .", "imageUrl": "https://static.wikitide.net/rnswiki/thumb/8/85/Spr_item_arcane_1.png/40px-Spr_item_arcane_1.png", "tiers": {"wizard": "S", "druid": "A", "spellsword": "B", "assassin": "F", "heavyblade": "F", "dancer": "F", "sniper": "F", "bruiser": "F", "defender": "F", "ancient": "S"}},
+  {"name": "Raven Grimoire", "description": "Your Special applies Curse Afflicted enemies take 10% extra damage. Duration : 5 seconds .", "imageUrl": "/items/raven-grimoire.png", "tiers": {"wizard": "A", "druid": "B", "spellsword": "C", "assassin": "F", "heavyblade": "F", "dancer": "F", "sniper": "F", "bruiser": "F", "defender": "F", "ancient": "A"}},
+  {"name": "Blackwing Staff", "description": "Your Primary applies Curse Afflicted enemies take 10% extra damage. Duration : 5 seconds .", "imageUrl": "/items/blackwing-staff.png", "tiers": {"wizard": "S", "druid": "A", "spellsword": "B", "assassin": "F", "heavyblade": "F", "dancer": "F", "sniper": "F", "bruiser": "F", "defender": "F", "ancient": "S"}},
 
   {
     "name": "Sapphire Brooch",
     "description": "A beautiful brooch that hums with magical energy.",
-    "imageUrl": "https://picsum.photos/seed/1/400/400",
+    "imageUrl": "/items/sapphire-brooch.png",
     "tiers": {
       "wizard": "S",
       "druid": "S",
@@ -87,7 +87,7 @@ export const items: Item[] = [
   {
     "name": "Ruby Ring",
     "description": "A ring that glows with an inner fire.",
-    "imageUrl": "https://picsum.photos/seed/2/400/400",
+    "imageUrl": "/items/ruby-ring.png",
     "tiers": {
       "wizard": "F",
       "assassin": "S",
@@ -104,7 +104,7 @@ export const items: Item[] = [
   {
     "name": "Swift Boots",
     "description": "These boots feel lighter than air.",
-    "imageUrl": "https://picsum.photos/seed/3/400/400",
+    "imageUrl": "/items/swift-boots.png",
     "tiers": {
       "wizard": "B",
       "assassin": "A",
@@ -121,7 +121,7 @@ export const items: Item[] = [
   {
     "name": "Ancient Tome",
     "description": "A book filled with forgotten incantations.",
-    "imageUrl": "https://picsum.photos/seed/4/400/400",
+    "imageUrl": "/items/ancient-tome.png",
     "tiers": {
       "wizard": "S",
       "druid": "A",
@@ -138,7 +138,7 @@ export const items: Item[] = [
   {
     "name": "Berserker's Greataxe",
     "description": "An axe that seems to hunger for battle.",
-    "imageUrl": "https://picsum.photos/seed/5/400/400",
+    "imageUrl": "/items/berserkers-greataxe.png",
     "tiers": {
       "heavyblade": "S",
       "bruiser": "S",
@@ -155,7 +155,7 @@ export const items: Item[] = [
   {
     "name": "Moon Glaive",
     "description": "A silent weapon that strikes like moonlight.",
-    "imageUrl": "https://picsum.photos/seed/6/400/400",
+    "imageUrl": "/items/moon-glaive.png",
     "tiers": {
       "dancer": "S",
       "assassin": "B",
@@ -172,7 +172,7 @@ export const items: Item[] = [
   {
     "name": "Cursed Idol",
     "description": "A unsettling idol that whispers promises of power.",
-    "imageUrl": "https://picsum.photos/seed/7/400/400",
+    "imageUrl": "/items/cursed-idol.png",
     "tiers": {
       "ancient": "S",
       "assassin": "A",
@@ -189,7 +189,7 @@ export const items: Item[] = [
   {
     "name": "Leather Armor",
     "description": "Simple but effective protection.",
-    "imageUrl": "https://picsum.photos/seed/8/400/400",
+    "imageUrl": "/items/leather-armor.png",
     "tiers": {
       "defender": "S",
       "bruiser": "A",
@@ -206,7 +206,7 @@ export const items: Item[] = [
   {
     "name": "Mage's Circlet",
     "description": "A circlet that focuses arcane energies.",
-    "imageUrl": "https://picsum.photos/seed/9/400/400",
+    "imageUrl": "/items/mages-circlet.png",
     "tiers": {
       "wizard": "A",
       "druid": "A",
@@ -223,7 +223,7 @@ export const items: Item[] = [
   {
     "name": "Longbow",
     "description": "A standard issue longbow for archers.",
-    "imageUrl": "https://picsum.photos/seed/10/400/400",
+    "imageUrl": "/items/longbow.png",
     "tiers": {
       "sniper": "S",
       "dancer": "A",
