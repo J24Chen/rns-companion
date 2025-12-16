@@ -1,3 +1,4 @@
+
 export interface Item {
   name: string;
   description: string;
@@ -10,8 +11,6 @@ export interface Item {
 export interface GameClass {
   id: string;
   name: string;
-  description: string;
-  kit: string;
 }
 
 export type Tier = 'S' | 'A' | 'B' | 'C' | 'D' | 'F' | 'NA';
