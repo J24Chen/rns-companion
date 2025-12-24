@@ -2158,7 +2158,7 @@ export const items: Item[] =
     {
       "name": "Raven Grimoire",
       "description": "blank",
-      "imageUrl": `/items/raven_grimoire.png${cacheBust}`,
+      "imageUrl": "https://static.wikitide.net/rnswiki/6/6f/Spr_item_arcane_0.png",
       "tiers": {
         "wizard": "F",
         "druid": "F",
